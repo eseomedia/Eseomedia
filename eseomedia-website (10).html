@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e'SEOmedia | Social Media Agency | Abuja, Nigeria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sage: #a8c5a0;
+  --sage-dark: #5a8f52;
+  --sage-deep: #2e5a27;
+  --cream: #f5f0e8;
+  --cream-dark: #e8e0d0;
+  --ink: #0e0e0e;
+  --ink-soft: #1e1e1e;
+  --muted: #6b6b6b;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: normal;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(245, 240, 232, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(168, 197, 160, 0.3);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--sage-dark); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage-dark); }
+.nav-cta {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--sage-dark) !important; transform: translateY(-1px); }
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span {
+  width: 28px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.3s ease;
+}
+
+/* HERO - Split Design */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  background: var(--ink);
+  padding: 140px 64px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  bottom: -120px; left: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,197,160,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  top: 80px; right: -60px;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(168,197,160,0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(168,197,160,0.15);
+  border: 1px solid rgba(168,197,160,0.3);
+  color: var(--sage);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+  width: fit-content;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--sage);
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 48px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sage);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 16px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.25s;
+  letter-spacing: 0.2px;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-primary:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+.btn-primary svg { width: 18px; height: 18px; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 16px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.2s;
+}
+.btn-secondary:hover { color: var(--sage); border-color: var(--sage); }
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* HERO RIGHT */
+.hero-right {
+  background: var(--sage);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+}
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--sage) 0%, #7aab70 50%, var(--sage-deep) 100%);
+}
+
+.hero-visual {
+  position: relative;
+  z-index: 2;
+  padding: 100px 48px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mockup-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 20px 24px;
+  color: var(--white);
+  animation: float 6s ease-in-out infinite;
+}
+.mockup-card:nth-child(2) { animation-delay: -2s; margin-left: 40px; }
+.mockup-card:nth-child(3) { animation-delay: -4s; }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.mockup-icon { font-size: 28px; margin-bottom: 10px; }
+.mockup-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.mockup-desc { font-size: 12px; opacity: 0.75; line-height: 1.4; }
+.mockup-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.hero-deco-text {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.1);
+  letter-spacing: -3px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* MARQUEE */
+.marquee-strip {
+  background: var(--sage-dark);
+  padding: 20px 0;
+  overflow: hidden;
+  position: relative;
+}
+.marquee-inner {
+  display: flex;
+  gap: 48px;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-item {
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+}
+.marquee-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--sage);
+  border-radius: 50%;
+}
+
+/* SECTION GENERAL */
+.section-inner { padding: 0 48px; max-width: 1440px; margin: 0 auto; }
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage-dark);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--sage-dark);
+}
+
+/* SERVICES */
+#services { padding: 120px 0; background: var(--cream); }
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 64px;
+  align-items: end;
+}
+.services-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: var(--ink);
+}
+.services-headline em { font-style: italic; color: var(--sage-dark); }
+.services-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+  background: var(--cream-dark);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--cream);
+  padding: 44px 36px;
+  position: relative;
+  transition: background 0.3s;
+  cursor: default;
+}
+.service-card:hover { background: var(--ink); }
+.service-card:hover .service-title,
+.service-card:hover .service-desc,
+.service-card:hover .service-price-label { color: rgba(255,255,255,0.9); }
+.service-card:hover .service-price { color: var(--sage); }
+.service-card:hover .service-tag { background: rgba(168,197,160,0.2); color: var(--sage); }
+.service-card:hover .service-icon-wrap { background: rgba(168,197,160,0.15); }
+.service-card:hover .service-features li { color: rgba(255,255,255,0.6); }
+
+.service-icon-wrap {
+  width: 52px; height: 52px;
+  background: var(--cream-dark);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+  transition: background 0.3s;
+}
+.service-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+  transition: color 0.3s;
+}
+.service-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  transition: color 0.3s;
+}
+.service-features {
+  list-style: none;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-features li {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+}
+.service-features li::before {
+  content: '✓';
+  width: 18px; height: 18px;
+  background: var(--sage-dark);
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.service-footer { display: flex; justify-content: space-between; align-items: flex-end; }
+.service-price-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; transition: color 0.3s; }
+.service-price { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--ink); transition: color 0.3s; }
+.service-tag {
+  background: var(--cream-dark);
+  color: var(--sage-dark);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+/* Featured card */
+.service-card.featured {
+  background: var(--ink);
+}
+.service-card.featured .service-title,
+.service-card.featured .service-desc { color: rgba(255,255,255,0.9); }
+.service-card.featured .service-features li { color: rgba(255,255,255,0.6); }
+.service-card.featured .service-price { color: var(--sage); }
+.service-card.featured .service-price-label { color: rgba(255,255,255,0.4); }
+.service-card.featured .service-icon-wrap { background: rgba(168,197,160,0.15); }
+.service-card.featured .service-tag { background: var(--sage); color: var(--ink); }
+
+.services-cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+/* PORTFOLIO */
+#portfolio { padding: 120px 0; background: var(--white); }
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+}
+.portfolio-card {
+  background: var(--cream);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.portfolio-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.12); }
+.portfolio-image {
+  height: 280px;
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: rgba(255,255,255,0.3);
+}
+.portfolio-content { padding: 32px; }
+.portfolio-tag {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+.portfolio-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.portfolio-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.portfolio-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--cream-dark);
+}
+.pstat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--sage-dark);
+  line-height: 1;
+}
+.pstat-label {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* ABOUT */
+#about { padding: 120px 0; background: var(--ink); overflow: hidden; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.about-visual { position: relative; }
+.about-portrait {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage-deep) 100%);
+  border-radius: 32px 32px 120px 32px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-portrait-inner {
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.1);
+  letter-spacing: -4px;
+  user-select: none;
+}
+.about-portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(46,90,39,0.8) 0%, transparent 60%);
+}
+.about-portrait-label {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
+  color: white;
+}
+.about-portrait-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.about-portrait-role { font-size: 13px; opacity: 0.7; }
+
+.about-badge {
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 100px; height: 100px;
+  background: var(--sage);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: spin-slow 20s linear infinite;
+  cursor: default;
+}
+.about-badge-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1;
+}
+.about-badge-text { font-size: 9px; font-weight: 700; color: var(--ink); letter-spacing: 1px; text-transform: uppercase; line-height: 1.3; }
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.about-content { color: var(--white); }
+.about-content .section-label { color: var(--sage); }
+.about-content .section-label::before { background: var(--sage); }
+.about-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+.about-headline em { font-style: italic; color: var(--sage); }
+.about-body {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.about-body strong { color: var(--sage); font-weight: 600; }
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.pillar {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.pillar:hover { background: rgba(168,197,160,0.08); border-color: rgba(168,197,160,0.2); }
+.pillar-icon { font-size: 22px; margin-bottom: 10px; }
+.pillar-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.pillar-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+/* BLOG */
+#blog { padding: 120px 0; background: var(--cream); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+.blog-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: block;
+}
+.blog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.blog-image {
+  height: 220px;
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+}
+.blog-content { padding: 28px; }
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.blog-date {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.blog-category {
+  background: var(--sage);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.blog-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.blog-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* CONTACT */
+#contact {
+  padding: 120px 0;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+#contact::before {
+  content: 'Let\'s Talk';
+  position: absolute;
+  top: 40px; right: -40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 160px;
+  font-weight: 900;
+  color: rgba(168,197,160,0.12);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -6px;
+  z-index: 0;
+}
+
+.contact-inner { position: relative; z-index: 1; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.contact-headline em { font-style: italic; color: var(--sage-dark); }
+.contact-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.contact-methods { display: flex; flex-direction: column; gap: 16px; }
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--white);
+  border-radius: 16px;
+  text-decoration: none;
+  border: 1px solid var(--cream-dark);
+  transition: all 0.25s;
+}
+.contact-method:hover {
+  border-color: var(--sage-dark);
+  transform: translateX(6px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+.contact-method-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background: var(--cream);
+}
+.contact-method-text { flex: 1; }
+.contact-method-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
+.contact-method-value { font-size: 15px; font-weight: 600; color: var(--ink); }
+.contact-method-arrow { font-size: 18px; color: var(--sage-dark); opacity: 0; transition: opacity 0.2s; }
+.contact-method:hover .contact-method-arrow { opacity: 1; }
+
+/* FORM */
+.contact-form {
+  background: var(--ink);
+  border-radius: 28px;
+  padding: 44px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-form::before {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,197,160,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.form-subtitle { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; line-height: 1.5; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 16px; position: relative; z-index: 1; }
+.form-group label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--sage);
+  background: rgba(168,197,160,0.08);
+}
+.form-group select option { background: #1a1a1a; color: white; }
+.form-group textarea { resize: none; height: 100px; }
+
+.form-submit {
+  width: 100%;
+  background: var(--sage);
+  color: var(--ink);
+  border: none;
+  border-radius: 100px;
+  padding: 16px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s;
+  margin-top: 8px;
+}
+.form-submit:hover {
+  background: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink-soft);
+  padding: 48px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.footer-logo span { color: var(--sage); }
+.footer-tagline {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 6px;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--sage); }
+.footer-copy {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* WHATSAPP FLOAT */
+.wa-float {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.wa-bubble {
+  background: #25D366;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.wa-bubble:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(37,211,102,0.5);
+}
+.wa-bubble svg { width: 20px; height: 20px; flex-shrink: 0; }
+.wa-ping {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 12px; height: 12px;
+  background: #ff4444;
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+}
+.wa-ping::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: #ff4444;
+  animation: ping 1.5s ease infinite;
+}
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+
+/* BLOG ARTICLE OVERLAY */
+.blog-article-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 9999;
+  display: none;
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+
+.blog-article-overlay.active {
+  display: block;
+}
+
+.blog-article-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 64px;
+  position: relative;
+}
+
+.blog-article-close {
+  position: sticky;
+  top: 20px;
+  right: 20px;
+  float: right;
+  width: 40px;
+  height: 40px;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.blog-article-close:hover {
+  background: var(--sage-dark);
+  transform: scale(1.1);
+}
+
+.blog-article-header {
+  margin-bottom: 48px;
+  clear: both;
+  padding-top: 20px;
+}
+
+.blog-article-category {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.blog-article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.blog-article-meta {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  color: var(--muted);
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--cream-dark);
+  flex-wrap: wrap;
+}
+
+.blog-article-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 40px 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.blog-article-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sage-dark);
+  margin: 32px 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.blog-article-content p {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.blog-article-content ul,
+.blog-article-content ol {
+  margin: 20px 0;
+  padding-left: 24px;
+}
+
+.blog-article-content li {
+  font-size: 17px;
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.blog-article-content strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.blog-highlight-box {
+  background: var(--sage);
+  color: var(--ink);
+  padding: 24px;
+  border-radius: 12px;
+  margin: 24px 0;
+}
+
+.blog-highlight-box h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.blog-cta-box {
+  background: var(--ink);
+  color: var(--white);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.blog-cta-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.blog-cta-box p {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .blog-article-container {
+    padding: 32px 24px;
+  }
+  
+  .blog-article-overlay {
+    padding: 20px 10px;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  nav { padding: 16px 24px; }
+  .nav-links { 
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--cream);
+    flex-direction: column;
+    justify-content: center;
+    transition: right 0.4s ease;
+    z-index: 999;
+  }
+  .nav-links.active { right: 0; }
+  .menu-toggle { display: flex; z-index: 1000; }
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+  
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 32px 64px; }
+  .hero-right { min-height: 400px; }
+  .services-header { grid-template-columns: 1fr; gap: 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-portrait { aspect-ratio: 4/3; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .section-inner { padding: 0 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .portfolio-grid, .blog-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">e'<span>SEO</span>media</a>
+  <div class="nav-links" id="navMenu">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#services">Pricing</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#about">About</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Social Media Agency · Abuja, Nigeria</div>
+    <h1 class="hero-headline">
+      Your brand deserves to be <em>seen, heard & booked</em>
+    </h1>
+    <p class="hero-sub">
+      e'SEOmedia helps businesses grow, stay consistent, and attract paying customers through strategic social media management and creative content.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/2349063228973?text=Hi!%20I%20want%20to%20grow%20my%20business%20on%20social%20media.%20Can%20we%20talk?" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a href="#services" class="btn-secondary">See our services →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Businesses Served</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Results-Focused</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="mockup-card">
+        <div class="mockup-icon">📈</div>
+        <div class="mockup-title">Page grew 340% in 60 days</div>
+        <div class="mockup-desc">Restaurant client · Abuja · Social media management + reels</div>
+        <div class="mockup-arrow">View results →</div>
+      </div>
+      <div class="mockup-card">
+        <div class="mockup-icon">💸</div>
+        <div class="mockup-title">₦2.4M in sales from one campaign</div>
+        <div class="mockup-desc">Fashion brand · Instagram ads + content strategy</div>
+        <div class="mockup-arrow">How we did it →</div>
+      </div>
+      <div class="mockup-card">
+        <div class="mockup-icon">🎬</div>
+        <div class="mockup-title">Over 500 leads generated</div>
+        <div class="mockup-desc">Service business · Ads + strategy</div>
+        <div class="mockup-arrow">See result →</div>
+      </div>
+    </div>
+    <div class="hero-deco-text">e'SEOmedia</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Social Media Management <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Instagram Growth <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Video Editing <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Paid Ads <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ads Starter Pack ₦29k <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Landing Page Creation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Content Strategy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Abuja, Nigeria 🇳🇬 <span class="marquee-dot"></span></span>
+    <!-- Repeat for infinite scroll -->
+    <span class="marquee-item">Social Media Management <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Instagram Growth <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Video Editing <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Paid Ads <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ads Starter Pack ₦29k <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Landing Page Creation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Content Strategy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Abuja, Nigeria 🇳🇬 <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-label">What we offer</div>
+        <h2 class="services-headline">
+          Every service your brand needs to <em>win online</em>
+        </h2>
+      </div>
+      <p class="services-desc">
+        We don't do cookie-cutter. Every strategy is built around your business, your audience, and your goals.
+      </p>
+    </div>
+
+    <!-- Services Overview List -->
+    <div class="reveal" style="margin-bottom: 64px;">
+      <div style="background: var(--white); border-radius: 24px; padding: 48px; border: 1px solid var(--cream-dark);">
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 32px; letter-spacing: -0.5px;">Our Services</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: var(--sage); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">📱</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Social Media Management</h4>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;">Complete Instagram management from strategy to daily posting and engagement.</p>
+              <div style="font-size: 14px; font-weight: 700; color: var(--sage-dark);">From ₦80,000/month</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: var(--sage); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">🎯</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Full Growth Package</h4>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;">Complete solution: management, paid ads, video editing, and strategy calls.</p>
+              <div style="font-size: 14px; font-weight: 700; color: var(--sage-dark);">From ₦200,000/month</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: var(--sage); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">🎬</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Video Editing & Reels</h4>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;">Professional video editing with captions, graphics, and trending audio.</p>
+              <div style="font-size: 14px; font-weight: 700; color: var(--sage-dark);">From ₦30,000/video</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: var(--sage); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">🚀</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Ads Starter Pack</h4>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;">Everything to start running profitable Facebook and Instagram ads.</p>
+              <div style="font-size: 14px; font-weight: 700; color: var(--sage-dark);">₦29,000 one-time</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: var(--sage); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">🖥️</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Landing Page Creation</h4>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;">Custom, high-converting landing pages delivered in 5 business days.</p>
+              <div style="font-size: 14px; font-weight: 700; color: var(--sage-dark);">₦100,000 one-time</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: var(--sage); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">📅</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Content Calendar Creation</h4>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;">30-day content strategy with scheduling and trend integration.</p>
+              <div style="font-size: 14px; font-weight: 700; color: var(--sage-dark);">Custom pricing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Pricing Section -->
+    <div style="margin-bottom: 32px;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--ink); text-align: center; margin-bottom: 16px; letter-spacing: -1px;">Detailed Pricing & Features</h3>
+      <p style="text-align: center; font-size: 15px; color: var(--muted); margin-bottom: 48px;">Choose the package that fits your business needs</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon-wrap">📱</div>
+        <div class="service-title">Social Media Management</div>
+        <div class="service-desc">Full management of your Instagram presence: strategy, content, posting, engagement, and growth.</div>
+        <ul class="service-features">
+          <li>Content calendar & strategy</li>
+          <li>Daily posting & scheduling</li>
+          <li>Community engagement</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <div class="service-footer">
+          <div>
+            <div class="service-price-label">Starting from</div>
+            <div class="service-price">₦80k<span style="font-size:14px;opacity:0.5">/mo</span></div>
+          </div>
+          <div class="service-tag">Most Popular</div>
+        </div>
+      </div>
+
+      <div class="service-card featured">
+        <div class="service-icon-wrap">🎯</div>
+        <div class="service-title">Full Growth Package</div>
+        <div class="service-desc">Our complete done-for-you solution combining management, ads, and video editing for maximum results.</div>
+        <ul class="service-features">
+          <li>Everything in Management</li>
+          <li>Paid ads setup & management</li>
+          <li>4 professional reels/month</li>
+          <li>Weekly strategy calls</li>
+        </ul>
+        <div class="service-footer">
+          <div>
+            <div class="service-price-label">Starting from</div>
+            <div class="service-price">₦200k<span style="font-size:14px;opacity:0.5">/mo</span></div>
+          </div>
+          <div class="service-tag">Best Value</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">🎬</div>
+        <div class="service-title">Video Editing & Reels</div>
+        <div class="service-desc">Professional video editing that turns raw footage into scroll-stopping content your audience can't ignore.</div>
+        <ul class="service-features">
+          <li>Reels & short-form editing</li>
+          <li>Captions & graphics overlay</li>
+          <li>Trending audio selection</li>
+          <li>24 to 48hr turnaround</li>
+        </ul>
+        <div class="service-footer">
+          <div>
+            <div class="service-price-label">Starting from</div>
+            <div class="service-price">₦30k<span style="font-size:14px;opacity:0.5">/video</span></div>
+          </div>
+          <div class="service-tag">Quick Start</div>
+        </div>
+      </div>
+
+      <div class="service-card" style="position:relative;overflow:hidden;">
+        <div style="position:absolute;top:16px;right:16px;background:linear-gradient(135deg,#f0a500,#e07b00);color:#fff;font-size:10px;font-weight:800;padding:4px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;">🔥 Hot Deal</div>
+        <div class="service-icon-wrap">🚀</div>
+        <div class="service-title">Ads Starter Pack</div>
+        <div class="service-desc">Everything you need to start running profitable ads on Instagram & Facebook, done for you, fast.</div>
+        <ul class="service-features">
+          <li>Target audience research & setup</li>
+          <li>Prepaid ad account creation</li>
+          <li>Full page optimization</li>
+          <li>Ready to run in 48hrs</li>
+        </ul>
+        <div class="service-footer">
+          <div>
+            <div class="service-price-label">One-time fee</div>
+            <div class="service-price">₦29k</div>
+          </div>
+          <div class="service-tag">Best Entry</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">🖥️</div>
+        <div class="service-title">Landing Page Creation</div>
+        <div class="service-desc">A high-converting, professionally designed landing page that turns visitors into paying customers.</div>
+        <ul class="service-features">
+          <li>Custom design tailored to your brand</li>
+          <li>Mobile-friendly & fast loading</li>
+          <li>Clear call-to-action layout</li>
+          <li>Delivered within 5 business days</li>
+        </ul>
+        <div class="service-footer">
+          <div>
+            <div class="service-price-label">One-time fee</div>
+            <div class="service-price">₦100k</div>
+          </div>
+          <div class="service-tag">New</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-cta reveal">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">Not sure which package is right for you? Let's talk, it's free.</p>
+      <a href="https://wa.me/2349063228973?text=Hi!%20I%20want%20to%20know%20more%20about%20your%20services%20and%20pricing." target="_blank" class="btn-primary" style="background:var(--ink);color:var(--white);display:inline-flex;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Get a Free Consultation
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="reveal" style="margin-bottom:64px;">
+      <div class="section-label">Our Work</div>
+      <h2 class="services-headline">
+        Real results for <em>real businesses</em>
+      </h2>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <div class="portfolio-image">📸</div>
+        <div class="portfolio-content">
+          <span class="portfolio-tag">Social Media</span>
+          <h3>E-commerce Brand Growth</h3>
+          <p>Increased engagement by 300% and drove consistent sales through strategic content and community building.</p>
+          <div class="portfolio-stats">
+            <div>
+              <div class="pstat-value">3×</div>
+              <div class="pstat-label">Engagement</div>
+            </div>
+            <div>
+              <div class="pstat-value">250%</div>
+              <div class="pstat-label">Sales</div>
+            </div>
+            <div>
+              <div class="pstat-value">5K+</div>
+              <div class="pstat-label">Followers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-image">🎯</div>
+        <div class="portfolio-content">
+          <span class="portfolio-tag">Paid Ads</span>
+          <h3>Local Business Campaign</h3>
+          <p>Generated 50+ qualified leads per month through targeted Facebook and Instagram advertising.</p>
+          <div class="portfolio-stats">
+            <div>
+              <div class="pstat-value">50+</div>
+              <div class="pstat-label">Leads</div>
+            </div>
+            <div>
+              <div class="pstat-value">₦2.5M</div>
+              <div class="pstat-label">Revenue</div>
+            </div>
+            <div>
+              <div class="pstat-value">400%</div>
+              <div class="pstat-label">ROI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-image">✨</div>
+        <div class="portfolio-content">
+          <span class="portfolio-tag">Full Service</span>
+          <h3>Beauty Brand Launch</h3>
+          <p>Complete social media strategy from zero to 10K followers in 4 months with consistent bookings.</p>
+          <div class="portfolio-stats">
+            <div>
+              <div class="pstat-value">10K</div>
+              <div class="pstat-label">Followers</div>
+            </div>
+            <div>
+              <div class="pstat-value">4</div>
+              <div class="pstat-label">Months</div>
+            </div>
+            <div>
+              <div class="pstat-value">85%</div>
+              <div class="pstat-label">Retention</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-portrait">
+          <div class="about-portrait-inner">e'SEO</div>
+          <div class="about-portrait-overlay"></div>
+          <div class="about-portrait-label">
+            <div class="about-portrait-name">e'SEOmedia</div>
+            <div class="about-portrait-role">Social Media Agency · Abuja, Nigeria</div>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">200+</div>
+          <div class="about-badge-text">Clients Served</div>
+        </div>
+      </div>
+
+      <div class="about-content reveal reveal-delay-2">
+        <div class="section-label">About e'SEOmedia</div>
+        <h2 class="about-headline">
+          The strategy behind <em>Abuja's</em> most visible brands online
+        </h2>
+        <p class="about-body">
+          e'SEOmedia is a social media agency dedicated to helping businesses transform their online presence. We started because we kept watching <strong>brilliant businesses go unnoticed online</strong> while competitors with inferior products thrived simply because of better digital presence.<br><br>
+          We combine data-driven strategy with deep knowledge of the West African market to help businesses not just gain followers, but <strong>attract real, paying customers</strong>. Every brand deserves to be seen, heard, and fully booked.
+        </p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🇳🇬</div>
+            <div class="pillar-title">Abuja-Based, Africa-Wide</div>
+            <div class="pillar-desc">Based in Abuja, with strategies that work across West Africa.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📊</div>
+            <div class="pillar-title">Data-Driven</div>
+            <div class="pillar-desc">Every decision backed by analytics, not just aesthetics.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Fast Turnaround</div>
+            <div class="pillar-desc">Quick execution without cutting corners on quality.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title">True Partnership</div>
+            <div class="pillar-desc">Your growth is personal to me. I treat every brand like my own.</div>
+          </div>
+        </div>
+        <a href="https://wa.me/2349063228973?text=Hi!%20I%27d%20love%20to%20work%20with%20e%27SEOmedia." target="_blank" class="btn-primary" style="display:inline-flex;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Let's Work Together
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="reveal" style="margin-bottom:64px;">
+      <div class="section-label">Insights & Tips</div>
+      <h2 class="services-headline">
+        Learn from <em>the experts</em>
+      </h2>
+    </div>
+
+    <div class="blog-grid">
+      <a href="blog-social-media-mistakes.html" target="_blank" class="blog-card reveal">
+        <div class="blog-image">📝</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-date">Feb 15, 2026</span>
+            <span class="blog-category">Strategy</span>
+          </div>
+          <h3>5 Social Media Mistakes Nigerian Businesses Make</h3>
+          <p>Learn the most common mistakes that are costing Nigerian businesses customers. Click to read the full article.</p>
+        </div>
+      </a>
+
+      <a href="blog-facebook-ads-nigeria.html" target="_blank" class="blog-card reveal">
+        <div class="blog-image">🎯</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-date">Feb 12, 2026</span>
+            <span class="blog-category">Ads</span>
+          </div>
+          <h3>How to Run Facebook Ads in Nigeria on a Budget</h3>
+          <p>A complete guide to creating effective ad campaigns with limited budget. Click to read the full article.</p>
+        </div>
+      </a>
+
+      <a href="blog-instagram-reels-guide.html" target="_blank" class="blog-card reveal">
+        <div class="blog-image">📱</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-date">Feb 8, 2026</span>
+            <span class="blog-category">Content</span>
+          </div>
+          <h3>The Ultimate Instagram Reels Guide for 2026</h3>
+          <p>Everything you need to know about creating Reels that go viral. Click to read the full article.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <div class="section-label">Get in touch</div>
+          <h2 class="contact-headline">
+            Ready to grow? <em>Let's talk</em> today.
+          </h2>
+          <p class="contact-sub">
+            The best time to start was yesterday. The second best time is right now. Reach out and let's build something great for your business.
+          </p>
+          <div class="contact-methods">
+            <a href="https://wa.me/2349063228973?text=Hi!%20I%20found%20your%20website%20and%20I%20want%20to%20grow%20my%20business%20on%20social%20media." target="_blank" class="contact-method">
+              <div class="contact-method-icon" style="background:#e8f8ed">💬</div>
+              <div class="contact-method-text">
+                <div class="contact-method-label">WhatsApp</div>
+                <div class="contact-method-value">+234 906 322 8973</div>
+              </div>
+              <div class="contact-method-arrow">→</div>
+            </a>
+            <a href="https://instagram.com/eseomedia" target="_blank" class="contact-method">
+              <div class="contact-method-icon" style="background:#fce8f4">📸</div>
+              <div class="contact-method-text">
+                <div class="contact-method-label">Instagram</div>
+                <div class="contact-method-value">@eseomedia</div>
+              </div>
+              <div class="contact-method-arrow">→</div>
+            </a>
+            <a href="mailto:eseomedia.com@gmail.com" class="contact-method">
+              <div class="contact-method-icon" style="background:#fff3e0">📧</div>
+              <div class="contact-method-text">
+                <div class="contact-method-label">Email</div>
+                <div class="contact-method-value">eseomedia.com@gmail.com</div>
+              </div>
+              <div class="contact-method-arrow">→</div>
+            </a>
+            <div class="contact-method" style="cursor:default">
+              <div class="contact-method-icon" style="background:#e8edf8">📍</div>
+              <div class="contact-method-text">
+                <div class="contact-method-label">Location</div>
+                <div class="contact-method-value">Abuja, Nigeria 🇳🇬</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right reveal reveal-delay-2">
+          <div class="contact-form">
+            <div class="form-title">Send a message</div>
+            <div class="form-subtitle">Fill this out and we'll reach out on WhatsApp within 24 hours.</div>
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Your Name</label>
+                  <input type="text" placeholder="e.g. Amaka Obi" id="fname" required>
+                </div>
+                <div class="form-group">
+                  <label>Business Name</label>
+                  <input type="text" placeholder="e.g. Amaka's Bakery" id="bname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Service Interested In</label>
+                <select id="service" required>
+                  <option value="">Select a service...</option>
+                  <option>Social Media Management</option>
+                  <option>Full Growth Package</option>
+                  <option>Video Editing & Reels</option>
+                  <option>Ads Starter Pack (₦29,000)</option>
+                  <option>Landing Page Creation (₦100,000)</option>
+                  <option>Not sure yet, need advice</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Tell Us About Your Business</label>
+                <textarea placeholder="What do you sell? What's your biggest challenge online? Where are you based?" id="msg" required></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Send via WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="#" class="footer-logo">e'<span>SEO</span>media</a>
+      <div class="footer-tagline">Helping businesses grow & stay consistent online</div>
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="https://instagram.com/eseomedia" target="_blank">Instagram</a>
+      <a href="https://wa.me/2349063228973" target="_blank">WhatsApp</a>
+    </div>
+    <div class="footer-copy">© 2026 e'SEOmedia · Abuja, Nigeria</div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/2349063228973?text=Hi!%20I%20found%20your%20website%20and%20I%27d%20love%20to%20work%20with%20e%27SEOmedia." target="_blank" class="wa-float">
+  <div class="wa-bubble">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    Chat on WhatsApp
+  </div>
+  <div class="wa-ping"></div>
+</a>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// WhatsApp form send
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('fname').value.trim();
+  const biz = document.getElementById('bname').value.trim();
+  const service = document.getElementById('service').value;
+  const msg = document.getElementById('msg').value.trim();
+  if (!name || !service || !msg) { alert('Please fill all required fields'); return; }
+  let text = `Hi! 👋 I found your website and I'm interested in working with e'SEOmedia.\n\n`;
+  text += `*Name:* ${name}\n`;
+  if (biz) text += `*Business:* ${biz}\n`;
+  text += `*Service:* ${service}\n\n*Message:*\n${msg}`;
+  window.open(`https://wa.me/2349063228973?text=${encodeURIComponent(text)}`, '_blank');
+  this.reset();
+});
+</script>
+
+</body>
+</html>
